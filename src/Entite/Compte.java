@@ -45,6 +45,12 @@ public class Compte {
         super();
     }
 
+    public Compte(int id, double solde, double decouvert, double maxDecouvert, double maxRetrait, double resteCredit, double paiementCreditParMois, String type, java.sql.Date ouverture, int clientId) {
+    }
+
+    public Compte(int id, double solde, double decouvert, double maxDecouvert, double maxRetrait, double resteCredit, double paiementCreditParMois, String type, double clientId) {
+    }
+
     public int getId() {
         return id;
     }
