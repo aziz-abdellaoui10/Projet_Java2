@@ -4,14 +4,11 @@ import Entite.Compte;
 import Entite.Credit;
 import Utils.DataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceCredit implements IService<Credit>{
+public class ServiceCredit implements IService<Credit> {
     private Connection con = DataSource.getInstance().getCon();
     private Statement ste;
 
@@ -34,7 +31,13 @@ public class ServiceCredit implements IService<Credit>{
 
     @Override
     public boolean supprimer(Credit t) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement x = (PreparedStatement) con.prepareStatement("delete from credit where id='" + t.getId() + "'");
+            x.execute();
+            return true;
+        } catch (Exception err) {
+            return false;
+        }
     }
 
     @Override
@@ -56,7 +59,7 @@ public class ServiceCredit implements IService<Credit>{
             String type = res.getString("type");
             int clientId = res.getInt("clientId");
 
-            Credit cr = new Credit(id, nCompte, montant, type,clientId);
+            Credit cr = new Credit(id, nCompte, montant, type, clientId);
             list.add(cr);
 
 
@@ -67,6 +70,16 @@ public class ServiceCredit implements IService<Credit>{
 
     @Override
     public Credit findbyId(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet res = ste.executeQuery("select * from credit where id='" + id + "'");
+
+
+        int nCompte = res.getInt("nCompte");
+        Double montant = res.getDouble("montant");
+        String type = res.getString("type");
+        int clientId = res.getInt("clientId");
+
+        Credit cr = new Credit(id, nCompte, montant, type, clientId);
+        return cr;
+
     }
 }
