@@ -20,7 +20,8 @@ public class ServiceCompte implements IService<Compte> {
     }
 
     @Override
-    public void ajouter(Compte t) throws SQLException {
+    public void ajouter(Compte t) throws SQLException
+    {
         String req = "INSERT INTO comptes ('id', 'solde','decouvert',  'MaxDecouvert' ,'MaxRetrait' , 'resteCredit','paiementCreditParMois' , 'type','clientId') "
                 + "VALUES ('" + t.getId() + "', '" + t.getSolde() + "', '" + t.getDecouvert() + "', '" + t.getMaxDecouvert() + "'," +
                 " '" + t.getMaxRetrait() + "', '" + t.getResteCredit() + "', '" + t.getPaiementCreditParMois() + "', '" + t.getType() + "', '" + t.getClientId() + "');";
@@ -30,7 +31,6 @@ public class ServiceCompte implements IService<Compte> {
 
     @Override
     public boolean supprimer(Compte t) throws SQLException {
-
         String req = "DELETE FROM 'comptes' WHERE id = " + t.getId();
         int result = ste.executeUpdate(req);
         return result > 0;
