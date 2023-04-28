@@ -27,6 +27,17 @@ public class Compte {
         this.type = type;
         this.ouverture = ouverture;
     }
+    public Compte(double solde, double maxDecouvert, double maxRetrait, int clientId) {
+        this.solde = solde;
+        this.MaxDecouvert = maxDecouvert;
+        this.MaxRetrait = maxRetrait;
+        this.paiementCreditParMois = 0;
+        this.resteCredit = 0;
+        this.decouvert = 0;
+        this.clientId = clientId;
+        this.type = "current";
+        this.ouverture = ouverture;
+    }
 
     public Compte(int id, double solde, double maxDecouvert, double maxRetrait, String type, Date ouverture, int clientId) {
         this.id = id;

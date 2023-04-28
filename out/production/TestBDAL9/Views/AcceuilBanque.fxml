@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="Bg_image" fx:id="bp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="727.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AcceuilBanqueController">
+    <center>
+        <AnchorPane fx:id="ap" BorderPane.alignment="CENTER">
+            <children>
+                <Button id="Button" fx:id="compteBtn" layoutX="364.0" layoutY="194.0" mnemonicParsing="false" onAction="#compteBtnSubmit" prefHeight="52.0" prefWidth="106.0" text="Compte">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Button>
+                <Button id="Button" fx:id="banqueBtn" layoutX="149.0" layoutY="192.0" mnemonicParsing="false" onAction="#banqueBtnSubmit" prefHeight="54.0" prefWidth="109.0" text="Banque">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Button>
+            <Button id="Button" fx:id="creditBtn" layoutX="579.0" layoutY="193.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="109.0" text="Credit">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button id="Button" fx:id="clientBtn" layoutX="470.0" layoutY="193.0" mnemonicParsing="false" onAction="#clientBtnSubmit" prefHeight="54.0" prefWidth="109.0" text="Client">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button id="Button" fx:id="brancheBtn" layoutX="258.0" layoutY="194.0" mnemonicParsing="false" onAction="#brancheBtnSubmit" prefHeight="52.0" prefWidth="106.0" text="Branche">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+    </center>
+    <top>
+        <Label prefHeight="84.0" prefWidth="589.0" text="Bienvenue dans notre banque" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="42.0" />
+            </font></Label>
+    </top>
+</BorderPane>
