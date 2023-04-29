@@ -18,7 +18,7 @@
                     <font>
                         <Font size="14.0" />
                     </font></Button>
-            <Button id="Button" fx:id="creditBtn" layoutX="579.0" layoutY="193.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="109.0" text="Credit">
+            <Button id="Button" fx:id="creditBtn" layoutX="579.0" layoutY="193.0" mnemonicParsing="false" onAction="#creditBtnSubmit" prefHeight="54.0" prefWidth="109.0" text="Credit">
                <font>
                   <Font size="14.0" />
                </font>

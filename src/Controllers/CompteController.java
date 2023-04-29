@@ -141,7 +141,6 @@ public class CompteController {
             c.setDecouvert(rs.getDouble("decouvert"));
             cl.add(c);
         }
-        System.out.println(cl);
 
         ClientCol.setCellValueFactory(new PropertyValueFactory<>("clientId"));
         CompteCol.setCellValueFactory(new PropertyValueFactory<>("id"));

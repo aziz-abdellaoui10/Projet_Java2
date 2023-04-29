@@ -4,27 +4,24 @@ import java.util.Objects;
 
 public class Credit {
     private int id;
-    private int nCredit;
     private Double montant;
-    private String Type;
+    private Double nbrAnnee;
     private int clientId;
 
     public Credit() {
         super();
     }
 
-    public Credit(int nCredit, Double montant, String type, int clientId) {
-        this.nCredit = nCredit;
+    public Credit(Double montant, Double nbrAnnee, int clientId) {
+        this.nbrAnnee = nbrAnnee;
         this.montant = montant;
-        Type = type;
         this.clientId = clientId;
     }
 
-    public Credit(int id, int nCredit, Double montant, String type, int clientId) {
+    public Credit(int id, Double nbrAnnee, Double montant, int clientId) {
         this.id = id;
-        this.nCredit = nCredit;
+        this.nbrAnnee = nbrAnnee;
         this.montant = montant;
-        Type = type;
         this.clientId = clientId;
     }
 
@@ -36,12 +33,12 @@ public class Credit {
         this.id = id;
     }
 
-    public int getnCredit() {
-        return nCredit;
+    public Double getnbrAnnee() {
+        return nbrAnnee;
     }
 
-    public void setnCredit(int nCredit) {
-        this.nCredit = nCredit;
+    public void setNbrAnnee(Double nbrAnnee) {
+        this.nbrAnnee = nbrAnnee;
     }
 
     public Double getMontant() {
@@ -50,14 +47,6 @@ public class Credit {
 
     public void setMontant(Double montant) {
         this.montant = montant;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public void setType(String type) {
-        Type = type;
     }
 
     public int getClientId() {
@@ -73,21 +62,20 @@ public class Credit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Credit credit = (Credit) o;
-        return id == credit.id && nCredit == credit.nCredit && clientId == credit.clientId && Objects.equals(montant, credit.montant) && Objects.equals(Type, credit.Type);
+        return id == credit.id && nbrAnnee == credit.nbrAnnee && clientId == credit.clientId && Objects.equals(montant, credit.montant);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nCredit, montant, Type, clientId);
+        return Objects.hash(id, nbrAnnee, montant, clientId);
     }
 
     @Override
     public String toString() {
         return "Credit{" +
                 "id=" + id +
-                ", nCredit=" + nCredit +
+                ", nbrAnnee=" + nbrAnnee +
                 ", montant=" + montant +
-                ", Type='" + Type + '\'' +
                 ", clientId=" + clientId +
                 '}';
     }
