@@ -205,7 +205,7 @@ public class CompteController {
     @FXML
     void onTransaction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Transaction.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/Transaction.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -218,7 +218,7 @@ public class CompteController {
     @FXML
     void onVirement(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Virement.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/Virement.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
