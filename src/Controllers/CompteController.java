@@ -89,6 +89,9 @@ public class CompteController {
     private ComboBox<Integer> combo;
 
     @FXML
+    private Button btnCredit;
+
+    @FXML
     void modifier(ActionEvent event) throws SQLException {
         Window owner = btnModify.getScene().getWindow();
         try {
@@ -219,6 +222,19 @@ public class CompteController {
     void onVirement(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/Virement.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onCredit(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/DemandeCredit.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

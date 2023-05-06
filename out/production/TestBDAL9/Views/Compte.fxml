@@ -63,6 +63,7 @@
 	<bottom>
 		<HBox alignment="CENTER" prefHeight="57.0" prefWidth="604.0" spacing="20.0" BorderPane.alignment="CENTER">
 			<children>
+            <Button id="green" fx:id="btnCredit" mnemonicParsing="false" onAction="#onCredit" text="Demande Credit" />
 				<Button id="green" fx:id="btnDelete" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
 				<Button id="green" fx:id="btnLister" mnemonicParsing="false" onAction="#onImport" text="Lister" />
 				<Button id="green" fx:id="btnMax" mnemonicParsing="false" onAction="#onMax" text="Max Compte" />

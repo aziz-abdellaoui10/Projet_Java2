@@ -32,12 +32,15 @@ public class CreditController {
 
     @FXML
     private TableColumn<Credit, Integer> idCol;
-    @FXML
-    private TableColumn<Credit, Integer> clientIdCol;
-
 
     @FXML
     private TableColumn<Credit, Double> montantCol;
+
+    @FXML
+    private TableColumn<Credit, Integer> idCompteCol;
+
+    @FXML
+    private TableColumn<Credit, String> isApprovedCol;
 
     @FXML
     private TableColumn<Credit, Double> nbrAnneeCol;
@@ -92,24 +95,20 @@ public class CreditController {
         while (rs.next()) {
             Credit c = new Credit();
             c.setId(rs.getInt("id"));
-            c.setClientId(rs.getInt("idClient"));
+            c.setIdCompte(rs.getInt("idCompte"));
             c.setMontant(rs.getDouble("montant"));
             c.setNbrAnnee(rs.getDouble("nbrAnnee"));
+            c.setIsApproved(rs.getString("isApproved"));
             cl.add(c);
 
         }
-        System.out.println(cl);
-
-//        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        clientIdCol.setCellValueFactory(new PropertyValueFactory<>("ClientId"));
-//        montantCol.setCellValueFactory(new PropertyValueFactory<>("Montant"));
-//        nbrAnneeCol.setCellValueFactory(new PropertyValueFactory<>("nbrAnnee"));
-//        table.getItems().addAll(cl);
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        clientIdCol.setCellValueFactory(new PropertyValueFactory<>("ClientId"));
-        montantCol.setCellValueFactory(new PropertyValueFactory<>("Montant"));
+        idCompteCol.setCellValueFactory(new PropertyValueFactory<>("idCompte"));
+        montantCol.setCellValueFactory(new PropertyValueFactory<>("montant"));
         nbrAnneeCol.setCellValueFactory(new PropertyValueFactory<>("nbrAnnee"));
+        isApprovedCol.setCellValueFactory(new PropertyValueFactory<>("isApproved"));
+
         table.getItems().addAll(cl);
     }
 

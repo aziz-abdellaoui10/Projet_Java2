@@ -39,6 +39,7 @@ public class TransactionController {
         c1 = DataSource.getCon();
         double sd = 0;
         double dc = 0;
+        double nvsolde = 0;
         double m=0;
         double decn=1;
         double decp=0;
@@ -56,20 +57,18 @@ public class TransactionController {
             dc=c.getMaxDecouvert();
             m=c.getMaxRetrait();
         }
-        double nvsolde=sd;
+        nvsolde=sd;
         Double montant=Double.parseDouble(montanttf.getText());
         if(montant>m) {
-            Alert alert = new Alert(AlertType.ERROR,"Retrait �chou�: montant superieur au max retrait",ButtonType.OK);
+            Alert alert = new Alert(AlertType.ERROR,"Retrait échoué: montant superieur au max retrait",ButtonType.OK);
             alert.showAndWait();
         }
         if(sd-montant<(-dc)) {
-            Alert alert = new Alert(AlertType.ERROR,"Retrait �chou�: solde du compte sera inferieur au max decouvert",ButtonType.OK);
+            Alert alert = new Alert(AlertType.ERROR,"Retrait échoué: solde du compte sera inferieur au max decouvert",ButtonType.OK);
             alert.showAndWait();
         }
-        if((montant<=m)&&(sd-montant<(-dc)))
+        if((montant<=m)&&(sd-montant>(-dc)))
         {
-            System.out.println("je suis la");
-
             nvsolde=sd-montant;
             if(nvsolde<0) {
                 PreparedStatement x=(PreparedStatement) c1.prepareStatement("update compte set solde=?,decouvert='"+decn+"' where id=?");

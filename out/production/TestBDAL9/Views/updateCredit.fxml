@@ -30,6 +30,11 @@
                                 <Font size="15.0" />
                             </font>
                         </Label>
+                  <Label text="Approve">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
                     </children>
                 </VBox>
             </left>
@@ -55,6 +60,7 @@
                     <children>
                         <TextField fx:id="montantField" prefHeight="25.0" prefWidth="459.0" promptText="montant" />
                         <TextField fx:id="nbrAnneeField" promptText="Nbr Annés Remboursement" />
+                  <TextField fx:id="approveField" promptText="To approve write &quot;Yes&quot;, to decline write &quot;No&quot;" />
                         <Button id="big_yellow" fx:id="modif" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#modifier" prefHeight="45.0" prefWidth="475.0" stylesheets="@style.css" text="valider la modification" textAlignment="CENTER">
                             <font>
                                 <Font size="25.0" />
