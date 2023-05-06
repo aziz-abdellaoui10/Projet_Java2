@@ -8,23 +8,20 @@ public class Banque {
     private int id;
     private String nom;
     private String code;
-    private ArrayList<Branche> branches;
 
     public Banque() {
         super();
     }
 
-    public Banque(String nom, String code, ArrayList<Branche> branches) {
+    public Banque(String nom, String code) {
         this.nom = nom;
         this.code = code;
-        this.branches = branches;
     }
 
     public Banque(int id, String nom, String code, ArrayList<Branche> branches) {
         this.id = id;
         this.nom = nom;
         this.code = code;
-        this.branches = branches;
     }
 
     public int getId() {
@@ -51,25 +48,17 @@ public class Banque {
         this.code = code;
     }
 
-    public ArrayList<Branche> getBranches() {
-        return branches;
-    }
-
-    public void setBranches(ArrayList<Branche> branches) {
-        this.branches = branches;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Banque banque = (Banque) o;
-        return id == banque.id && Objects.equals(nom, banque.nom) && Objects.equals(code, banque.code) && Objects.equals(branches, banque.branches);
+        return id == banque.id && Objects.equals(nom, banque.nom) && Objects.equals(code, banque.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, code, branches);
+        return Objects.hash(id, nom, code);
     }
 
     @Override
@@ -78,7 +67,6 @@ public class Banque {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", code='" + code + '\'' +
-                ", branches=" + branches +
                 '}';
     }
 }
