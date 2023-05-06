@@ -28,6 +28,12 @@ public class Branche {
         this.credits=credits;
     }
 
+    public Branche(String codeBranche, String ville, int banqueId) {
+        this.codeBranche = codeBranche;
+        this.ville = ville;
+        this.banqueId = banqueId;
+    }
+
     public Branche() {
         super();
     }

@@ -1,52 +1,67 @@
 package Controllers;
 
 import Entite.Branche;
+
 import Utils.DataSource;
-
-import java.sql.*;
-import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BrancheController {
-    @FXML
-    private Button btnSubmit;
 
     @FXML
-    private TextField idField;
+    private TableColumn<Branche, Integer> banqueIdCol;
 
     @FXML
-    private TextField labelField;
+    private TextField banqueid;
 
     @FXML
-    private TableView<Branche> table;
-
-    @FXML
-    private TableColumn<Branche, Integer> idCol;
-
-    @FXML
-    private TableColumn<Branche, String> labelCol;
-
-    @FXML
-    private Button btnImport;
-
-    @FXML
-    private Button btnModify;
+    private TableColumn<Branche, String> brancheCol;
 
     @FXML
     private Button btnDelete;
 
     @FXML
     private Button btnExit;
+
+    @FXML
+    private Button btnImport;
+
+    @FXML
+    private Button btnSubmit;
+
+    @FXML
+    private Button btnmodify;
+
+    @FXML
+    private TextField codebranche;
+
+    @FXML
+    private TableColumn<Branche, Integer> idCol;
+
+    @FXML
+    private TableView<Branche> table;
+
+    @FXML
+    private TextField ville;
+
+    @FXML
+    private TableColumn<Branche, String> villeCol;
 
     static Connection c1 = null;
 
@@ -58,11 +73,13 @@ public class BrancheController {
     void onDelete(ActionEvent event) throws SQLException {
         c1 = DataSource.getCon();
 
-        int id = table.getSelectionModel().getSelectedItem().getId();
+        int idc;
+        idc = table.getSelectionModel().getSelectedItem().getId();
         table.getItems().remove(table.getSelectionModel().getSelectedItem());
-        PreparedStatement ps = c1.prepareStatement("delete from branche where id = ?");
-        ps.setInt(1, id);
-        ps.executeUpdate();
+        PreparedStatement x = (PreparedStatement) c1.prepareStatement("delete from branche where id='" + idc + "'");
+        x.execute();
+
+
     }
 
     @FXML
@@ -77,53 +94,59 @@ public class BrancheController {
         c1 = DataSource.getCon();
 
         table.getItems().clear();
-        PreparedStatement ps = c1.prepareStatement("select * from branche");
-        ResultSet rs = ps.executeQuery();
-        ArrayList<Branche> branches = new ArrayList<>();
+        PreparedStatement x1 = (PreparedStatement) c1.prepareStatement("select * from branche");
+        ResultSet rs = x1.executeQuery();
+        ArrayList<Branche> cl = new ArrayList<>();
 
         while (rs.next()) {
             Branche b = new Branche();
             b.setId(rs.getInt("id"));
+            b.setCodeBranche(rs.getString("codeBranche"));
             b.setVille(rs.getString("ville"));
-            branches.add(b);
+            b.setBanqueId(rs.getInt("banqueId"));
+            cl.add(b);
         }
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        labelCol.setCellValueFactory(new PropertyValueFactory<>("label"));
-        table.getItems().addAll(branches);
+        brancheCol.setCellValueFactory(new PropertyValueFactory<>("codeBranche"));
+        villeCol.setCellValueFactory(new PropertyValueFactory<>("ville"));
+        banqueIdCol.setCellValueFactory(new PropertyValueFactory<>("banqueId"));
+        table.getItems().addAll(cl);
     }
 
     @FXML
     void onModify(ActionEvent event) throws SQLException {
-        Window owner = btnModify.getScene().getWindow();
+        Window owner = btnmodify.getScene().getWindow();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/updateBranche.fxml"));
-            Parent root = fxmlLoader.load();
-
+            Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Stage stage = (Stage) btnModify.getScene().getWindow();
+        Stage stage = (Stage) btnmodify.getScene().getWindow();
         stage.close();
     }
+    @FXML
+    void onSubmit(ActionEvent event) throws SQLException {
+        c1 = DataSource.getCon();
 
-//    @FXML
-//    void onSubmit(ActionEvent event) throws SQLException {
-//        c1 = DataSource.getCon();
-//
-//        int id = Integer.parseInt(idField.getText());
-//        String label = labelField.getText();
-//        PreparedStatement ps = c1.prepareStatement("insert into branche(id, label) values (?, ?)");
-//        ps.setInt(1, id);
-//        ps.setString(2, label);
-//        ps.executeUpdate();
-//
-//        Branche b = new Branche(id, label);
-//        table.getItems().add(b);
-//        idField.clear();
-//        labelField.clear();
-//    }
+        String code= codebranche.getText();
+        String nomVille = ville.getText();
+        String banqueId = banqueid.getText();
+        PreparedStatement x = (PreparedStatement) c1.prepareStatement("insert into branche (codeBranche,ville,banqueId) values(?,?,?)");
+
+        x.setString(1, code);
+        x.setString(2, nomVille);
+        x.setString(3, banqueId);
+        x.execute();
+
+        Branche c = new Branche(this.codebranche.getText(), this.ville.getText(), Integer.parseInt(this.banqueid.getText()));
+        table.getItems().add(c);
+
+
+    }
+
 }

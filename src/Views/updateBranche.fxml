@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifBrancheController">
+    <children>
+        <BorderPane layoutX="-145.0" layoutY="-272.0" prefHeight="200.0" prefWidth="200.0" />
+        <BorderPane layoutX="-122.0" layoutY="-154.0" prefHeight="200.0" prefWidth="200.0" />
+        <BorderPane id="Bg_image" layoutY="-6.0" prefHeight="416.0" prefWidth="575.0" stylesheets="@style.css">
+            <bottom>
+                <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            </bottom>
+            <left>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label prefHeight="26.0" prefWidth="100.0" text="Branche :" textAlignment="CENTER">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Ville : ">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Banque ID : ">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </left>
+            <top>
+                <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label prefHeight="54.0" prefWidth="162.0" text="      ID">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="idfield" prefHeight="54.0" prefWidth="200.0" promptText="id" />
+                        <Button id="big_yellow" mnemonicParsing="false" onAction="#cherher" prefHeight="51.0" prefWidth="217.0" stylesheets="@style.css" text="chercher">
+                            <font>
+                                <Font size="25.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <VBox prefHeight="120.0" prefWidth="475.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <TextField fx:id="branchefield" prefHeight="25.0" prefWidth="459.0" promptText="brancheCode" />
+                        <TextField fx:id="villeField" promptText="ville" />
+                        <TextField fx:id="banqueidfield" promptText="banqueid" />
+                        <Button id="big_yellow" fx:id="modif" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#modifier" prefHeight="45.0" prefWidth="475.0" stylesheets="@style.css" text="valider la modification" textAlignment="CENTER">
+                            <font>
+                                <Font size="25.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
